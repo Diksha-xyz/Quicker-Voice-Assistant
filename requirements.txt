@@ -1,5 +1,6 @@
-gradio==4.26.1
-gTTS==2.4.5
-SpeechRecognition==3.8.1
-wikipedia==1.4.0
-pyjokes==0.6.0
+gradio
+gTTS
+SpeechRecognition
+wikipedia
+pyjokes
+
