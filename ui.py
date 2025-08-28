@@ -90,7 +90,7 @@ with gr.Blocks() as demo:
     )
 
     output_text = gr.Textbox(label="Assistant Response")
-    output_audio = gr.Audio(label="Audio Response", type="file")
+    output_audio = gr.Audio(label="Audio Response", type="filepath")
 
     def process_input(text_input, mic_file, action):
         """Combine text and mic input; prioritize mic if available."""
@@ -119,4 +119,5 @@ with gr.Blocks() as demo:
 if __name__ == "__main__":
     # Render provides PORT via environment variable
     demo.launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 8080)))
+
 
