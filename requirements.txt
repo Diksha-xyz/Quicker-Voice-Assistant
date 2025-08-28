@@ -1,0 +1,6 @@
+gradio
+gTTS
+wikipedia
+speechrecognition
+pyaudio
+
