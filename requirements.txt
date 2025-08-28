@@ -1,7 +1,0 @@
-gradio
-gTTS
-wikipedia
-speechrecognition
-
-
-
