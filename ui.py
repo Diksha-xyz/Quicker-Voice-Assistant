@@ -6,6 +6,7 @@ import webbrowser
 import pyjokes
 import tempfile
 import os
+import speech_recognition as sr
 
 # ----------------- Core Assistant Functions -----------------
 
@@ -80,7 +81,8 @@ with gr.Blocks() as demo:
 
     with gr.Row():
         query_input = gr.Textbox(label="Type your query here")
-        mic_input = gr.Audio(source="microphone", type="filepath", label="Or speak here")
+        # Updated mic input for latest Gradio
+        mic_input = gr.Audio(sources=["microphone"], type="filepath", label="Or speak here")
 
     action_dropdown = gr.Dropdown(
         choices=["Time", "Date", "Wikipedia", "Joke", "YouTube", "Google"],
@@ -93,7 +95,6 @@ with gr.Blocks() as demo:
     def process_input(text_input, mic_file, action):
         """Combine text and mic input; prioritize mic if available."""
         if mic_file:
-            import speech_recognition as sr
             r = sr.Recognizer()
             with sr.AudioFile(mic_file) as source:
                 audio_data = r.record(source)
@@ -114,8 +115,8 @@ with gr.Blocks() as demo:
         outputs=[output_text, output_audio]
     )
 
+# ----------------- Launch for Render -----------------
 if __name__ == "__main__":
-    demo.launch()
-
-
+    # Render provides PORT via environment variable
+    demo.launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 8080)))
 
